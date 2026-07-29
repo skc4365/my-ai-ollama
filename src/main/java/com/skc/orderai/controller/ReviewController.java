@@ -17,34 +17,24 @@ import com.skc.orderai.service.ReviewService;
 
 import lombok.RequiredArgsConstructor;
 
-
-
 @RestController
 @RequestMapping("/api/reviews")
 @RequiredArgsConstructor
 public class ReviewController {
 
-
     private final ReviewService reviewService;
-
-
 
     /**
      * 후기 등록 + AI 분석
      */
     @PostMapping
-    public ResponseEntity<ReviewResponse> save(
-            @RequestBody ReviewRequest request
-    ){
+    public ResponseEntity<ReviewResponse> save( @RequestBody ReviewRequest request ){
 
-        ReviewResponse response =
-                reviewService.save(request);
-
+        ReviewResponse response = reviewService.save(request);
 
         return ResponseEntity.ok(response);
 
     }
-
 
 
     /**
@@ -53,24 +43,19 @@ public class ReviewController {
     @GetMapping
     public ResponseEntity<List<Review>> findAll(){
 
-        return ResponseEntity.ok(
-                reviewService.findAll()
-        );
+        return ResponseEntity.ok( reviewService.findAll() );
 
     }
-
 
 
     /**
      * 후기 단건 조회
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Review> findById(
-            @PathVariable("id") Long id
-    ) {
-        return ResponseEntity.ok(
-                reviewService.findById(id)
-        );
+    public ResponseEntity<Review> findById( @PathVariable("id") Long id ) {
+    	
+        return ResponseEntity.ok( reviewService.findById(id) );
+        
     }
 
 }

@@ -18,24 +18,20 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderController {
 
-    private final OrderRepository repository;
+	private final OrderRepository repository;
 
-    @PostMapping
-    public Order save(
+	@PostMapping
+	public Order save( @RequestBody Order order) {
 
-            @RequestBody Order order
+		return repository.save(order);
 
-    ) {
+	}
 
-        return repository.save(order);
+	@GetMapping
+	public List<Order> list() {
 
-    }
+		return repository.findAll();
 
-    @GetMapping
-    public List<Order> list() {
-
-        return repository.findAll();
-
-    }
+	}
 
 }
