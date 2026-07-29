@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: my-ai-ollama
+
+  datasource:
+      url: jdbc:postgresql://localhost:5432/proj
+      username: postgres
+      password: 1234
+  
+  jpa:
+      hibernate:
+        ddl-auto: update
+        show-sql: true
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+
+  
+  ai:
+  
+      ollama:
+    
+        base-url: http://localhost:11434
+    
+        chat:
+    
+          model: qwen2.5:3b
+springdoc:
+
+  swagger-ui:
+    path: /swagger
+
+  api-docs:
+    path: /api-docs
+            
+      
+    
